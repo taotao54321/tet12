@@ -37,11 +37,17 @@ pub fn index_to_name(idx: i32) -> String {
 }
 
 /// 周波数を実数インデックスに変換する。
+///
+/// `freq` は正でなければならない。
 pub fn freq_to_indexf(freq: f64) -> f64 {
+    assert!(freq > 0.0);
+
     12.0 * (freq / FREQ_BASE).log2()
 }
 
 /// 周波数を最も近い整数インデックスに丸める。
+///
+/// `freq` は正でなければならない。
 pub fn freq_to_index(freq: f64) -> i32 {
     freq_to_indexf(freq).round() as i32
 }
